@@ -24,6 +24,15 @@ class Backlog extends Model
         return $this->belongsTo('App\Sprint');
     }
 
+
+    /**
+     * Get the estimate for task.
+     */
+    public function estimate()
+    {
+        return $this->hasOne('App\Estimate');
+    }
+
 }
 
 

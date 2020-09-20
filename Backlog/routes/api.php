@@ -36,9 +36,11 @@ Route::post('/sprints', [SprintController::class, 'store'])->name('add_sprint');
 
 Route::post('/sprints/add-task', [SprintController::class, 'store_task'])->name('add_sprint');
 
+Route::post('/sprints/start', [SprintController::class, 'start_sprint'])->name('start_sprint');
+ 
+Route::post('/tasks/close', [BacklogController::class, 'close'])->name('close_task');
 
 
 
 //test
-Route::get('/sprints_all', [SprintController::class, 'index'])->name('all');
-
+Route::get('/test', [SprintController::class, 'test'])->name('test');

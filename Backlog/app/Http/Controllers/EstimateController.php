@@ -45,7 +45,7 @@ class EstimateController extends Controller
 
         $estimate->save(); 
 
-        //unit test сюда
+        //unit test 
         return response()->json([
             'Добавлена оценка для задачи: ' => $backlog->name , 
         ]);

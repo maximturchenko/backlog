@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Sprint;
 use App\Backlog; 
 
+
+use App\Http\Requests\StoreSprintRequest;
+use App\Http\Requests\StartSprintRequest;
+
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -43,11 +48,10 @@ class SprintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSprintRequest $request)
     {
-        $sprint = new Sprint;              
-        //добавить проверки  
-        $year = Carbon::createFromFormat('Y', "2020")->format('y'); 
+        $sprint = new Sprint; 
+        $year = Carbon::createFromFormat('Y', $request->Year)->format('y'); 
         $week = $request->Week;
         $tt =  $year.'-'.$week;          
          $sprint->name = $tt;
@@ -78,6 +82,22 @@ class SprintController extends Controller
     }
 
     
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  App\Http\Requests\StartSprintRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function start_sprint(StartSprintRequest $request)
+    { 
+        $sprint = Sprint::where('name', '=', $request->sprintId)->firstOrFail();  
+        $sprint->status_id = 1; //Запущен, в работе
+        $sprint->save();
+         return response()->json([
+          'Запущен '. $sprint->name.'' => 'true' , 
+         ]);
+    }
+  
 
     /**
      * Display the specified resource.
@@ -122,5 +142,5 @@ class SprintController extends Controller
     public function destroy(Sprint $sprint)
     {
         //
-    }
+    } 
 }

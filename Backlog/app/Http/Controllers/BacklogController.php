@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Backlog;
 use App\Sprint;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBacklog;
+
 use Illuminate\Support\Facades\Auth;
 
 class BacklogController extends Controller
@@ -32,10 +34,10 @@ class BacklogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreBacklog $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBacklog $request)
     {  
         $backlog = new Backlog;
         $backlog->Title = $request->Title;
@@ -56,6 +58,23 @@ class BacklogController extends Controller
             'id' => $backlog->name , 
         ]);
     }
+
+    /**
+     * Add status close for task
+     *
+    * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function close(Request $request)
+    {       
+       $backlog = Backlog::where('name', '=', $request->taskId)->firstOrFail();  
+       $backlog->status_id = 1; //закрыта
+       $backlog->save();
+        return response()->json([
+         'Задача '. $backlog->name.'' => ' закрыта' , 
+        ]);
+    }
+
 
     /**
      * Display the specified resource.

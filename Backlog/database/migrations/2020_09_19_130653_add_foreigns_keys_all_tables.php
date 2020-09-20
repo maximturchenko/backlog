@@ -31,7 +31,7 @@ class AddForeignsKeysAllTables extends Migration
      * @return void
      */
     public function down()
-    {
-        //
+    { 
+        
     }
 }

@@ -17,5 +17,8 @@ class StatusSeeder extends Seeder
         DB::table('statuses')->insert([
             'name' => "В работе"
         ]); 
+        DB::table('status_task')->insert([
+            'name' => "Закрыта"
+        ]); 
     }
 }
