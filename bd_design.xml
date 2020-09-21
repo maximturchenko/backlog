@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="689" y="73" name="backlog">
+</datatypes><table x="677" y="56" name="backlog">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -66,7 +66,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="348" y="216" name="users">
+<table x="354" y="216" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -98,7 +98,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="921" y="41" name="sprints">
+<table x="956" y="45" name="sprints">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -139,7 +139,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="371" y="453" name="status_task">
+<table x="318" y="469" name="status_task">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
